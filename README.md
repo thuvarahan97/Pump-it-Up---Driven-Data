@@ -95,6 +95,6 @@
 * Predictions for the kept-aside evaluation dataset are obtained for each trained model.
 * Based on the predicitons, a confusion matrix and a classification report showing f1-scores are generated for each model.
 * In all the attempts of preprocessing, training and prediction processes, Random Forest Classifier gave better accuracy than the other classifiers.
-* Random Forest has given 0.84 accuracy with oob score of 0.8595 in the last attempt.
-* Thus, Random Forest Classifier has been chosen for the model predictions of test dataset for the submission.
+* Random Forest Classifier has given 0.84 accuracy with oob score of 0.8595 in the last attempt.
+* Therefore, Random Forest Classifier has been chosen for the model predictions of test dataset for the submission.
 * Finally, the model is trained on full train dataset without splitting, and predictions are obtained for test dataset.
