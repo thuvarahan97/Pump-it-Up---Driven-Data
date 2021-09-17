@@ -13,9 +13,18 @@
 * At first, 'id' is set as the index of train data and test data.
 * Count of train labels are plotted in a bar graph, and it shows that the train data is unbalanced.
 
+![](images/count_statusgroup.png?raw=true)
+
 ### Checking distribution of features with train labels
 
 * Count of 'status_group' values for some of the columns of the train data are plotted to check the distribution of data.
+
+![](images/count_sourceclass.png?raw=true)
+![](images/count_waterpointtypegroup.png?raw=true)
+![](images/count_waterquality.png?raw=true)
+![](images/count_schememanagement.png?raw=true)
+![](images/count_payment.png?raw=true)
+![](images/count_constructionyear.png?raw=true)
 
 ### Removing duplicate values from "installer" and "funder" columns
 
@@ -25,7 +34,12 @@
 
 ### Handling missing data
 
-* Count of null values in each column in train and test data are checked
+* Count of null values in each column in train and test data are checked.
+* Seperate graphs for train and test data are plotted showing percentage for each columns with missing data.
+
+![](images/missing_traindata.png?raw=true)
+![](images/missing_testdata.png?raw=true)
+
 * All the columns with named string values are encoded as numbers using Label Encoding, before filling some of the columns with missing data.
   * The columns are 'funder', 'installer', 'wpt_name', 'basin', 'subvillage', 
                   'region', 'lga', 'ward', 'public_meeting', 'recorded_by', 
@@ -60,6 +74,9 @@
 ### Analyzing correlation between features
 
 * Using Pearson Correlation, heatmap is plotted.
+ 
+![](images/corr_heatmap.png?raw=true)
+
 * 4 features such as 'extraction_type_group', 'quantity_group', 'source_type' and 'waterpoint_type_group' are identified to be the highly correlated features for the threshhold 0.85, and they are dropped from train and test datasets.
 
 ### Removing unimportant features 
@@ -98,3 +115,5 @@
 * Random Forest Classifier has given 0.84 accuracy with oob score of 0.8595 in the last attempt.
 * Therefore, Random Forest Classifier has been chosen for the model predictions of test dataset for the submission.
 * Finally, the model is trained on full train dataset without splitting, and predictions are obtained for test dataset.
+
+![](images/submission_screenshot.png?raw=true)
