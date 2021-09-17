@@ -33,4 +33,26 @@
 
 ### Removing outliers
 
-* It is identified that 'latititude', 'longitude' and 'gps_height' columns have outliers where the 'longitude' and 'gps_height' have negative values. The 'latitude' column values with respect to 'longitude' negative values too seems unreal values. Therefore, 
+* It is identified that 'latititude', 'longitude' and 'gps_height' columns have outliers where the 'longitude' and 'gps_height' have negative values. The 'latitude' column values that correspond to 'longitude' negative values too are unreal values which are nearly 0.
+* 'latitude' values that correspond to the 'longitude' values which are less than 1, are set as null at first and then, grouped by 'region_code' and the null values in the 'latitude' are filled with the mean values of each group.
+* 'longitude' values which are less than 1, are set as null and then, grouped by 'region_code' and the null values in the 'longitude' are filled with the mean values of each group.
+* 'gps_height' values which are less than 1, are set as null and then, grouped by 'region_code' and the null values in the 'gps_height' are filled with the mean values of each group.
+* The missing data count is again checked, and the null values which are still in the 'gps_height' column are filled with the mean value of the column.
+* Then, 'construction_year' are identified to have 0 values. They are replaced with a value (1950) lower than the actual year minimum value (1960) in the column, assuming that the records were not made for the 'construction_year' before 1960.
+
+### Analyzing column relationships based on dates
+
+* "date_recorded" is obtained in datetime format.
+* "construction_year" too is converted from year value to datetime format.
+* A new "period" column is defined which means how long the pumps are kept planted, that is the time period between the constructed year and the last date the record was made.
+* At first, the "period" is calculated by finding the difference between "construction_year" and "date_recorded".
+* The obtained "period" values are converted to numeric values (timedelta64[D]).
+* The "period" negative values replaced with the mean of non-negative values.
+* Since the "period" values are distributed in wide range of numeric values, they are obtained into 5 bins, and label encoded.
+* The "construction_year" and "date_recorded" columns are dropped from train and test datasets.
+
+### Analyzing correlation between features
+
+* Using Pearson Correlation, heatmap is plotted.
+* 4 features such as 'extraction_type_group', 'quantity_group', 'source_type' and 'waterpoint_type_group' are identified to be the highly correlated features for the threshhold 0.85, and they are dropped from train and test dataset.
+
