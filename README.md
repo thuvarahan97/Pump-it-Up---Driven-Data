@@ -54,5 +54,29 @@
 ### Analyzing correlation between features
 
 * Using Pearson Correlation, heatmap is plotted.
-* 4 features such as 'extraction_type_group', 'quantity_group', 'source_type' and 'waterpoint_type_group' are identified to be the highly correlated features for the threshhold 0.85, and they are dropped from train and test dataset.
+* 4 features such as 'extraction_type_group', 'quantity_group', 'source_type' and 'waterpoint_type_group' are identified to be the highly correlated features for the threshhold 0.85, and they are dropped from train and test datasets.
 
+### Removing unimportant features 
+
+* From data analysis and findings from early model training processes, columns such as 'recorded_by', 'water_quality', 'payment_type', 'num_private', 'installer' and 'funder' are dropped from both train and test datasets.
+* Here, 'num_private' is not clearly mentioned about its significance in the description of the competition and it has many 0 values which makes no sense.
+* 'installer' and 'funder' too are found to be not important by the analysis made on many model training processes.
+* 'payment_type', 'water_quality' and 'recorded_by' features does not affect the pump condition in real world.
+
+### Performing One-Hot Encoding
+
+* 'payment','source_class', 'permit' and 'quantity' are one-hot encoded in the combined train and test dataset.
+* After that, the combined train and test data are obtained seperately again.
+
+### Splitting the train dataset for evaluation purposes
+
+* 'status_group' train label is obtained in y_train and the train data is obtained in X_train.
+* The train dataset is splitted with test size of 0.2 and random state of 10.
+
+### Handling the unbalanced train data
+
+* SMOTE is used to oversample the train dataset.
+* However, ADASYN, SMOTE+Tomek and SMOTE+Ensemble too were involved earlier to oversample the train dataset. But, SMOTE gave good result with better accuracy.
+* X_train is again created using pandas dataframe to retain the columns even after oversampling, which helps to avoid errors during model training processes.
+
+## Model Training
