@@ -1,5 +1,11 @@
 # Pump-it-Up---Driven-Data
 
+## Import Libraries and Dataset
+
+* Required libraries are loaded.
+* Train dataset, test dataset, train labels and submission format are loaded from csv files.
+* Size of train dataset and test dataset are analyzed.
+
 ## Preprocessing
 
 ### Initiating the preprocessing task
@@ -80,3 +86,15 @@
 * X_train is again created using pandas dataframe to retain the columns even after oversampling, which helps to avoid errors during model training processes.
 
 ## Model Training
+
+* Decision Tree, Random Forest, XGBoost and CatBoost classifiers have been used to train and evaluate the model seperately.
+* After the model were trained, a seperate graph for each model is plotted to display the features ordered based on their importance in the training process.
+
+## Model Predictions
+
+* Predictions for the kept-aside evaluation dataset are obtained for each trained model.
+* Based on the predicitons, a confusion matrix and a classification report showing f1-scores are generated for each model.
+* In all the attempts of preprocessing, training and prediction processes, Random Forest Classifier gave better accuracy than the other classifiers.
+* Random Forest has given 0.84 accuracy with oob score of 0.8595 in the last attempt.
+* Thus, Random Forest Classifier has been chosen for the model predictions of test dataset for the submission.
+* Finally, the model is trained on full train dataset without splitting, and predictions are obtained for test dataset.
