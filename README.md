@@ -116,4 +116,5 @@
 * Therefore, Random Forest Classifier has been chosen for the model predictions of test dataset for the submission.
 * Finally, the model is trained on full train dataset without splitting, and predictions are obtained for test dataset.
 
-![](images/submission_screenshot.png?raw=true)
+<br/>
+<img src="images/submission_screenshot.png" width="700">
